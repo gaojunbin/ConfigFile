@@ -1,0 +1,9 @@
+version: '3.3'
+services:
+    frpc:
+        restart: always
+        network_mode: host
+        volumes:
+            - './frpc.ini:/etc/frp/frpc.ini'
+        container_name: frpc
+        image: junbingao/frpc
