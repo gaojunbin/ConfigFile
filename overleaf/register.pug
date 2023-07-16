@@ -1,0 +1,28 @@
+extends ../layout-marketing
+
+block content
+  main.content.content-alt#main-content
+    .container
+      .row
+        .col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3
+          .card
+            .page-header
+              h1 Register
+            if message
+              .alert.alert-success= message
+            if err_message
+              .alert.alert-danger= err_message
+            form(action="/register", method="post")
+              input(type="hidden", name="_csrf", value=_csrf)
+              if email
+                div.form-group
+                  label(for="email") Email
+                  input#email.form-control(type="email", name="email", value=email, required)
+              else
+                div.form-group
+                  label(for="email") Email
+                  input#email.form-control(type="email", name="email", placeholder="email@example.com", required)
+              div.form-group
+                label(for="invitationCode") Invitation Code
+                input#invitationCode.form-control(type="text", name="invitationCode", required)
+              button.btn.btn-primary(type="submit") Register

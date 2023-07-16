@@ -18,6 +18,11 @@ services:
             - redis
         volumes:
             - ./sharelatex_data:/var/lib/sharelatex
+            - ./sharelatex_data/register.pug:/overleaf/services/web/app/views/user/register.pug:ro
+            - ./sharelatex_data/router.js:/overleaf/services/web/app/src/router.js:ro
+            - ./sharelatex_data/UserController.js:/overleaf/services/web/app/src/Features/User/UserController.js:ro
+            - ./sharelatex_data/UserPagesController.js:/overleaf/services/web/app/src/Features/User/UserPagesController.js:ro
+            
             ########################################################################
             ####  Server Pro: Uncomment the following line to mount the docker  ####
             ####             socket, required for Sibling Containers to work    ####
@@ -49,7 +54,7 @@ services:
             ## Set for SSL via nginx-proxy
             #VIRTUAL_HOST: 103.112.212.22
 
-            # SHARELATEX_SITE_URL: http://sharelatex.mydomain.com
+            SHARELATEX_SITE_URL: http://overleaf.junbingao.com
             # SHARELATEX_NAV_TITLE: Our ShareLaTeX Instance
             # SHARELATEX_HEADER_IMAGE_URL: http://somewhere.com/mylogo.png
             # SHARELATEX_ADMIN_EMAIL: support@it.com
@@ -61,6 +66,15 @@ services:
 
             # SHARELATEX_EMAIL_AWS_SES_ACCESS_KEY_ID:
             # SHARELATEX_EMAIL_AWS_SES_SECRET_KEY:
+
+            SHARELATEX_EMAIL_FROM_ADDRESS: "YOUR QQ  MAIL"
+            SHARELATEX_EMAIL_SMTP_HOST: smtp.qq.com
+            SHARELATEX_EMAIL_SMTP_PORT: 465
+            SHARELATEX_EMAIL_SMTP_SECURE: 'true'
+            SHARELATEX_EMAIL_SMTP_USER: YOUR QQ  MAIL
+            SHARELATEX_EMAIL_SMTP_PASS: YOUR PASS KEY
+            SHARELATEX_EMAIL_SMTP_TLS_REJECT_UNAUTH: 'true'
+            SHARELATEX_EMAIL_SMTP_IGNORE_TLS: 'false'
 
             # SHARELATEX_EMAIL_SMTP_HOST: smtp.mydomain.com
             # SHARELATEX_EMAIL_SMTP_PORT: 587
