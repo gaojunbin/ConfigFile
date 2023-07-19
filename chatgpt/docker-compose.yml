@@ -7,3 +7,4 @@ services:
             - OPENAI_API_KEY=<YOUR OPENAI API KEY> # 2. modify your openai API key, you should visit https://openai.com/blog/chatgpt
             - CODE=<YOUR PASSWORD>                 # 3. set your password to visit chat web
         image: yidadaa/chatgpt-next-web
+        restart: unless-stopped
