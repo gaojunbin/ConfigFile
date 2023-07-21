@@ -2,7 +2,7 @@ version: "3.3"
 services:
   cloudreve:
     container_name: cloudreve
-    image: cloudreve/cloudreve:latest
+    image: junbingao/cloudreve:latest
     restart: unless-stopped
     ports:
       - "5212:5212"
@@ -16,11 +16,16 @@ services:
       - aria2
   aria2:
     container_name: aria2
-    image: p3terx/aria2-pro
+    image: junbingao/aria2-pro
     restart: unless-stopped
     environment:
-      - RPC_SECRET=your_aria_rpc_token
+      - RPC_SECRET=<your_aria_rpc_token>  # 修改这个密钥
       - RPC_PORT=6800
+      - DOWNLOAD_DIR=/data
+      - PUID=0
+      - PGID=0
+      - UMASK_SET=022
+      - TZ=Asia/Shanghai
     volumes:
       - ./aria2/config:/config
       - temp_data:/data
