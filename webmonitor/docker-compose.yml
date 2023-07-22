@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+    webmonitor:
+        container_name: webmonitor
+        restart: always
+        ports:
+            - "9011:8000"
+        environment:
+            - PORT=8000
+            - USERNAME=<username>  # your username
+            - PASSWORD=<password>  # your password
+        volumes:
+            - ./data:/app/db
+        image: junbingao/webmonitor
