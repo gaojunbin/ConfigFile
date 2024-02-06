@@ -1,0 +1,19 @@
+version: '3'
+services:
+  clash:
+    # ghcr.io/dreamacro/clash
+    # ghcr.io/dreamacro/clash-premium
+    # dreamacro/clash
+    # dreamacro/clash-premium
+    image: junbingao/clash:latest
+    container_name: clash
+    volumes:
+      - ./clash:/root/.config/clash
+      # - ./ui:/ui # dashboard volume
+    # # TUN
+    # cap_add:
+    #   - NET_ADMIN
+    # devices:
+    #   - /dev/net/tun
+    restart: unless-stopped
+    network_mode: "host"
