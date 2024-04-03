@@ -1,3 +1,4 @@
+#!/bin/bash
 # You could modify these environment variables to change the default constants
 # Default to ~/.Trash
 DEFAULT_TRASH="$HOME/.Trash"
