@@ -329,6 +329,30 @@ trash(){
 
   [[ "$OPT_VERBOSE" = 1 ]] && list_files "$file"
 
+  local file_size=$(du -s -k $file | awk '{print ($1 / 1024 / 1024)}')
+
+  echo $file_size
+
+  if [[ $file_size -gt 1 ]]; then
+    echo "[safe-rm Warnning]: $file is larger than 10GB."
+    echo -n "Do you want to move it to trash? (yes[y] / no[n]): "
+    read answer
+    answer=$(echo "$answer" | tr '[:upper:]' '[:lower:]')
+    while true; do
+      if [[ $answer = "yes" || $answer = "y" ]]; then
+        break
+      elif [[ $answer = "no" || $answer = "n" ]]; then
+        /bin/rm -rf $file
+        debug "File $file permanently deteted."
+        return 0
+      else
+        echo -n "Please input yes[y] or no[n]: "
+        read answer
+        answer=$(echo "$answer" | tr '[:upper:]' '[:lower:]')
+      fi
+    done
+  fi
+
   debug "mv $move to $trash_name"
   mv "$move" "$trash_name"
 
