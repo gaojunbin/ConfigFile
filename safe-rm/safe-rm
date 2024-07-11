@@ -331,8 +331,6 @@ trash(){
 
   local file_size=$(du -s -k $file | awk '{print int($1 / 1024 / 1024)}')
 
-  echo $file_size
-
   if [[ $file_size -gt 10 ]]; then
     echo "[safe-rm Warnning]: $file is larger than 10GB."
     echo -n "Do you want to move it to trash? (yes[y] / no[n]): "
