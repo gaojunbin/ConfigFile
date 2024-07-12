@@ -33,7 +33,7 @@ video_default = [
 
 text_default = [
   { command = "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code" },
-  { command = "~/.rmate" },
+  { command = ".rmate" },
   { command = "vim" },
   { command = "gedit", fork = true, silent = true },
   { command = "bat", args = [ "--paging=always" ] }
