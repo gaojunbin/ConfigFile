@@ -1,7 +1,7 @@
 version: '3'
 services:
   app:
-    image: 'junbingao/nginxproxy:cn'
+    image: 'jc21/nginx-proxy-manager:latest'
     restart: always
     ports:
       - '80:80'
